@@ -28,6 +28,11 @@
         }).addTo(map);
         
         var locationFilter = new L.LocationFilter().addTo(map);
+        locationFilter.on("change", function() {
+            var bounds = this.getBounds();
+            $("#result .sw").val(bounds.getSouthWest().lat + ", " + bounds.getSouthWest().lng);
+            $("#result .ne").val(bounds.getNorthEast().lat + ", " + bounds.getNorthEast().lng);
+        });
 
     </script>
 </body>
